@@ -56,12 +56,10 @@ def scrape_urls(url_list):
     all_results = []
     for url in url_list:
         try:
-            path_to_driver = "C:\\Users\\leo.yorke\\Desktop\\Leo\espn\\chromedriver\\chromedriver.exe"
-            browser = webdriver.Chrome(executable_path=path_to_driver)
+            browser = webdriver.Chrome(executable_path="chromedriver.exe")
             browser.get(url)
             wait = WebDriverWait(browser, 5)
             element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[1]')))
-
             for key, value in xpaths.items():
                 skip = 0
                 try:
@@ -69,6 +67,12 @@ def scrape_urls(url_list):
                     element.click()
                     html = browser.page_source
                     soup = bs4.BeautifulSoup(html, "html.parser")
+                    team_a = soup.find('div', class_='team team-a').find('span', class_='long-name').get_text()
+                    team_a_score = soup.find('div', class_='team team-a').find('div', class_='score icon-font-after').get_text()
+                    team_b = soup.find('div', class_='team team-b').find('span', class_='long-name').get_text()
+                    team_b_score = soup.find('div', class_='team team-b').find('div', class_='score icon-font-before').get_text()
+                    competition = soup.find('div', class_='game-details header').get_text()
+                    print(team_a, team_a_score,  team_b, team_b_score, competition)
                     for data in soup.find_all('div', class_='col-b'):
                         sub_match_list = []
                         for tables in data.find_all("tbody"):
@@ -79,7 +83,8 @@ def scrape_urls(url_list):
                                 sub_match_list.append(player_row)
                         df = pd.DataFrame(sub_match_list, columns=columns_labels[key])
                         match_data[key] = df
-                except Exception:
+                except Exception as e:
+                    print("Link not found", e)
                     skip = 1
                     pass
             browser.quit()
@@ -88,20 +93,33 @@ def scrape_urls(url_list):
                 for key, value in match_data.items():
                     frames.append(value)
                 single_result = functools.reduce(lambda left,right: pd.merge(left,right,on='Player'), frames)
+                single_result["team"] = None
+                single_result["team"][0:23] = team_a
+                single_result["team"][23:] = team_b
+                single_result["score"] = None
+                single_result["score"][0:23] = team_a_score
+                single_result["score"][23:] = team_b_score
+                single_result["competition"] = competition
                 all_results.append(single_result)
+                print(single_result)
             else:
                 pass
-        except Exception:
-            pass
+        except Exception as e:
+            print("There was a problem loading the page", e)
+            browser.quit()
+            break
     return pd.concat(all_results)
 
 
 def write_results(result_set):
     """ This function writes a dataframe to a csv"""
-    return result_set.to_csv("C:\\Users\\leo.yorke\\Desktop\\Leo\espn\\match.csv", index=False)
+    return result_set.to_csv("match.csv", index=False)
 
-urls = generate_urls(5)
-print(urls)
-results = scrape_urls(urls)
-write_results(results)
-results.to_csv("match.csv", index=False)
+
+if __name__ == "__main__": 
+    #urls = generate_urls(5)
+    #print(urls)
+    urls = ['http://www.espn.co.uk/rugby/playerstats?gameId=291170&league=289234']
+    results = scrape_urls(urls)
+    write_results(results)
+    results.to_csv("match.csv", index=False)

@@ -1,14 +1,24 @@
-import requests
+import requests, bs4, functools, re, datetime
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import bs4
-import functools
-import re
-import datetime
 
+XPATHS = {"Scoring": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[1]',
+          "Attacking": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[2]',
+          "Defending": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[3]',
+          "Discipline": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[4]'}
+
+COLUMN_LABELS = {"Scoring": ['Player', 'T', 'TA', 'CG', 'PG', 'DGC', 'PTS'],
+                  "Attacking": ['Player', 'K', 'P', 'R', 'MR', 'CB', 'DB', 'O', 'LWS'],
+                  "Defending": ['Player', 'TC', 'T', 'MT', 'LW'],
+                  "Discipline": ['Player', 'PC', 'YC', 'RC']}
+
+MATCH_DICT = {"Scoring": 0,
+              "Attacking": 0,
+              "Defending": 0,
+              "Discipline": 0}
 
 def generate_urls(numdays):
     """ This function returns a list of  all the games from today to numdays
@@ -23,41 +33,15 @@ def generate_urls(numdays):
         soup = bs4.BeautifulSoup(requests.get(url).text, 'lxml')
         for link in soup.find_all('a'):
             if 'gameId' in str(link.get('href')):
-                links.append(re.sub('.*\?',
-                                    'http://www.espn.co.uk/rugby/playerstats?',
-                                    str(link.get('href'))))
-    return (list(set(links)))
-
-
-xpaths = {"Scoring": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[1]',
-          "Attacking": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[2]',
-          "Defending": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[3]',
-          "Discipline": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[4]'}
-
-columns_labels = {"Scoring": ['Player', 'T', 'TA', 'CG', 'PG', 'DGC', 'PTS'],
-                  "Attacking": ['Player', 'K', 'P', 'R', 'MR', 'CB', 'DB', 'O', 'LWS'],
-                  "Defending": ['Player', 'TC', 'T', 'MT', 'LW'],
-                  "Discipline": ['Player', 'PC', 'YC', 'RC']}
-
-no_columns = {"Scoring": 7,
-              "Attacking": 9,
-              "Defending": 5,
-              "Discipline": 4}
-
-match_dict = {"Scoring": 0,
-              "Attacking": 0,
-              "Defending": 0,
-              "Discipline": 0}
+                links.append(re.sub('.*\?', 'http://www.espn.co.uk/rugby/playerstats?', str(link.get('href'))))
+    return list(set(links))
 
 
 def open_webpage(url):
     """ This function opens a url with webdriver and returns it."""
-    try:
-        browser = webdriver.Chrome(executable_path="chromedriver.exe")
-        browser.get(url)
-        return browser
-    except:
-        return "Link not found"
+    browser = webdriver.Chrome(executable_path="chromedriver.exe")
+    browser.get(url)
+    return browser
 
 
 def get_match_data(browser):
@@ -79,35 +63,26 @@ def get_player_data(browser):
         returns it."""
     wait = WebDriverWait(browser, 5)
     element = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[1]')))
-    for key, value in xpaths.items():
-        skip = 0
-        try:
-            element = browser.find_element_by_xpath(value)
-            element.click()
-            html = browser.page_source
-            soup = bs4.BeautifulSoup(html, "html.parser")
-            for data in soup.find_all('div', class_='col-b'):
-                sub_match_list = []
-                for tables in data.find_all("tbody"):
-                    for row in tables.find_all("tr"):
-                        player_row = []
-                        for element in row:
-                            player_row.append(element.get_text())
-                        sub_match_list.append(player_row)
-                df = pd.DataFrame(sub_match_list, columns=columns_labels[key])
-                match_dict[key] = df
-        except Exception as e:
-            print("Link not found", e)
-            skip = 1
-            pass
-    if skip == 0:
-        frames = []
-        for key, value in match_dict.items():
-            frames.append(value)
-        single_result = functools.reduce(lambda left,right: pd.merge(left,right,on='Player'), frames)
-        return single_result
-    else:
-        return None
+    for key, value in XPATHS.items():
+        element = browser.find_element_by_xpath(value)
+        element.click()
+        html = browser.page_source
+        soup = bs4.BeautifulSoup(html, "html.parser")
+        for data in soup.find_all('div', class_='col-b'):
+            sub_match_list = []
+            for tables in data.find_all("tbody"):
+                for row in tables.find_all("tr"):
+                    player_row = []
+                    for element in row:
+                        player_row.append(element.get_text())
+                    sub_match_list.append(player_row)
+            df = pd.DataFrame(sub_match_list, columns=COLUMN_LABELS[key])
+            MATCH_DICT[key] = df
+    frames = []
+    for key, value in MATCH_DICT.items():
+        frames.append(value)
+    single_result = functools.reduce(lambda left,right: pd.merge(left,right,on='Player'), frames)
+    return single_result
 
 def combine_results(match_data, player_data):
     """ This functions joins the player and match data and returns a single dataframe"""
@@ -126,16 +101,28 @@ def write_results(all_data):
     return all_data.to_csv("match.csv", index=False)
 
 
+def parse_position(dataframe):
+    """ Split player postition and name into two separate columns and return
+        a dataframe """
+    dataframe["postition"] = dataframe["Player"].str.extract('([A-Z]+$|[N8]+$)')
+    dataframe["Player"] = dataframe["Player"].str.replace('([A-Z]+$|[N8]+$)', '')
+    return dataframe
+
 
 if __name__ == "__main__": 
     urls = generate_urls(5)
     all_results = []
     for url in urls:
-        browser = open_webpage(url)
-        match_data = get_match_data(browser)
-        player_data = get_player_data(browser)
-        results = combine_results(match_data, player_data)
-        all_results.append(results)
-        browser.quit()
+        try:
+            browser = open_webpage(url)
+            match_data = get_match_data(browser)
+            player_data = get_player_data(browser)
+            results = combine_results(match_data, player_data)
+            all_results.append(results)
+            browser.quit()
+        except:
+            print("The following url didn't work: ", url)
+            browser.quit()
     final = pd.concat(all_results)
-    write_results(final)
+    final_parsed = parse_position(final)
+    write_results(final_parsed)

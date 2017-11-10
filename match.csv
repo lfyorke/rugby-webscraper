@@ -1,93 +1,93 @@
-Player,T_x,TA,CG,PG,DGC,PTS,K,P,R,MR,CB,DB,O,LWS,TC,T_y,MT,LW,PC,YC,RC,team,score,competition
-K MatsushimaFB,0,0,0,0,0,0,5,2,13,94,3,9,0,0,1,3,3,0,0,0,0,Japan,30,Friendly 2017
-L LemekiW,0,0,0,0,0,0,0,3,7,11,3,1,1,0,0,6,1,0,0,0,0,Japan,30,Friendly 2017
-T LafaeleC,0,0,0,0,0,0,0,4,4,4,0,1,0,0,0,12,0,0,0,0,0,Japan,30,Friendly 2017
-H TatekawaC,0,0,0,0,0,0,1,6,1,1,0,0,0,0,0,9,3,0,1,0,0,Japan,30,Friendly 2017
-R NoguchiW,0,0,0,0,0,0,0,4,6,22,0,1,2,0,1,3,2,0,0,0,0,Japan,30,Friendly 2017
-R MatsudaFH,0,0,1,3,0,11,9,10,10,51,1,2,0,0,2,7,3,0,1,0,0,Japan,30,Friendly 2017
-F TanakaSH,0,0,0,0,0,0,7,41,0,0,0,0,0,0,0,2,2,0,0,0,0,Japan,30,Friendly 2017
-K InagakiP,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,17,3,0,1,0,0,Japan,30,Friendly 2017
-S HorieH,0,0,0,0,0,0,0,0,2,8,0,0,0,0,0,13,2,6,1,0,0,Japan,30,Friendly 2017
-T AsaharaP,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,2,2,0,1,0,0,Japan,30,Friendly 2017
-K HimenoL,1,0,0,0,0,5,0,1,10,27,2,5,0,0,3,13,0,0,1,0,0,Japan,30,Friendly 2017
-U HeluL,0,0,0,0,0,0,0,0,3,6,0,1,0,0,0,4,0,0,1,0,0,Japan,30,Friendly 2017
-M LeitchF,0,0,0,0,0,0,0,5,9,11,0,3,1,0,1,18,0,0,0,0,0,Japan,30,Friendly 2017
-S NunomakiF,0,0,0,0,0,0,0,4,1,4,0,0,0,0,1,10,5,0,0,0,0,Japan,30,Friendly 2017
-A MafiN8,1,0,0,0,0,5,0,2,14,38,0,1,0,0,1,18,2,0,0,0,0,Japan,30,Friendly 2017
-A SakateR,0,0,0,0,0,0,0,0,3,10,1,1,0,0,0,3,0,4,0,0,0,Japan,30,Friendly 2017
-K YamamotoR,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Japan,30,Friendly 2017
-A ValuR,0,0,0,0,0,0,0,0,2,11,0,1,0,0,0,5,1,0,1,0,0,Japan,30,Friendly 2017
-W WaltR,1,0,0,0,0,5,0,0,8,9,0,1,0,0,0,13,1,0,0,0,0,Japan,30,Friendly 2017
-F LautamiR,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,Japan,30,Friendly 2017
-Y NagareR,0,1,0,0,0,0,0,26,3,4,0,0,0,0,0,0,0,0,0,0,0,Japan,30,Friendly 2017
-Y TamuraR,0,0,2,0,0,4,5,5,0,0,0,0,0,0,0,1,0,0,0,0,0,Japan,30,Friendly 2017
-S TeaupaR,0,0,0,0,0,0,0,2,5,39,2,9,1,0,2,5,2,0,0,0,0,Japan,30,Friendly 2017
-K BealeFB,0,3,0,0,0,0,7,14,10,76,1,0,2,0,1,3,0,0,0,0,0,Australia,63,Friendly 2017
-H SpeightW,1,0,0,0,0,5,0,1,6,41,2,6,1,0,1,5,2,0,0,0,0,Australia,63,Friendly 2017
-T KuridraniC,3,0,0,0,0,15,0,1,6,94,3,1,1,0,0,6,2,0,2,0,0,Australia,63,Friendly 2017
-S KereviC,2,1,0,0,0,10,0,4,17,111,2,6,2,0,0,8,3,0,1,0,0,Australia,63,Friendly 2017
-M KoroibeteW,0,1,0,0,0,0,0,6,9,44,1,1,4,0,0,9,5,0,1,0,0,Australia,63,Friendly 2017
-R HodgeFH,0,1,9,0,0,18,18,21,14,34,0,0,0,0,1,3,1,0,1,0,0,Australia,63,Friendly 2017
-N PhippsSH,1,1,0,0,0,5,2,103,5,5,0,2,1,0,3,3,1,0,1,0,0,Australia,63,Friendly 2017
-S SioP,0,0,0,0,0,0,0,6,6,18,1,2,0,0,0,3,1,0,0,0,0,Australia,63,Friendly 2017
-T Polota-NauH,1,0,0,0,0,5,1,3,13,23,0,1,0,0,1,4,3,9,1,0,0,Australia,63,Friendly 2017
-S KepuP,0,0,0,0,0,0,0,2,7,3,0,0,2,0,2,5,1,0,1,0,0,Australia,63,Friendly 2017
-R SimmonsL,1,0,0,0,0,5,0,6,14,33,1,1,0,0,1,5,2,0,1,0,0,Australia,63,Friendly 2017
-A ColemanL,0,0,0,0,0,0,0,4,6,10,0,0,0,1,0,7,0,0,1,0,0,Australia,63,Friendly 2017
-N HaniganF,0,0,0,0,0,0,0,5,9,19,0,0,0,0,1,7,3,0,0,0,0,Australia,63,Friendly 2017
-M HooperF,0,0,0,0,0,0,1,3,5,8,1,1,0,0,0,12,1,0,1,0,0,Australia,63,Friendly 2017
-S McMahonN8,0,0,0,0,0,0,0,7,13,54,1,4,2,0,0,7,1,0,0,0,0,Australia,63,Friendly 2017
-S MooreR,0,0,0,0,0,0,0,1,1,3,0,0,0,0,0,2,0,4,0,0,0,Australia,63,Friendly 2017
-T RobertsonR,0,0,0,0,0,0,0,0,2,7,0,1,0,0,0,3,0,0,0,0,0,Australia,63,Friendly 2017
-A AlaalatoaR,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,2,2,0,0,0,0,Australia,63,Friendly 2017
-M PhilipR,0,0,0,0,0,0,0,0,6,10,0,1,0,0,0,5,1,0,1,0,0,Australia,63,Friendly 2017
-B McCalmanR,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,1,0,0,Australia,63,Friendly 2017
-L TimaniR,0,0,0,0,0,0,0,0,2,6,0,0,0,0,0,4,4,0,0,0,0,Australia,63,Friendly 2017
-J PowellR,0,0,0,0,0,0,1,12,0,0,0,0,0,0,0,5,1,0,0,0,0,Australia,63,Friendly 2017
-C RonaR,0,0,0,0,0,0,0,2,4,17,0,5,0,0,0,0,2,0,1,0,0,Australia,63,Friendly 2017
-M LamoulieFB,0,0,0,0,0,0,0,3,6,64,0,2,0,0,0,2,1,0,1,0,0,Agen,26,Top 14 Orange 2018
-G TilsleyW,1,0,0,0,0,5,0,3,13,98,1,2,1,0,1,3,1,0,0,0,0,Agen,26,Top 14 Orange 2018
-J HeriteauC,0,0,0,0,0,0,0,2,3,9,1,1,2,0,0,4,3,0,0,0,0,Agen,26,Top 14 Orange 2018
-P FouyssacC,0,0,0,0,0,0,0,1,5,7,0,0,0,0,1,11,1,0,0,0,0,Agen,26,Top 14 Orange 2018
-F NakosiW,0,0,0,0,0,0,1,0,5,17,0,2,0,0,0,3,1,0,1,0,0,Agen,26,Top 14 Orange 2018
-J McIntyreFH,0,1,2,3,0,13,15,25,3,0,0,0,0,0,1,4,1,0,0,0,0,Agen,26,Top 14 Orange 2018
-R JanuarieSH,0,0,0,0,0,0,7,54,6,16,1,0,0,0,0,3,0,0,0,0,0,Agen,26,Top 14 Orange 2018
-Q BethuneP,0,0,0,0,0,0,0,0,6,8,0,0,0,0,1,12,1,0,0,0,0,Agen,26,Top 14 Orange 2018
-F BoschH,0,0,0,0,0,0,0,2,13,31,0,0,1,0,1,17,2,11,2,0,0,Agen,26,Top 14 Orange 2018
-D RyanP,0,0,0,0,0,0,0,1,6,5,0,0,0,0,0,8,0,0,0,0,0,Agen,26,Top 14 Orange 2018
-D MarchoisL,1,0,0,0,0,5,0,1,8,3,0,0,0,0,0,6,1,0,0,0,0,Agen,26,Top 14 Orange 2018
-C BraendlinL,0,0,0,0,0,0,0,0,2,1,0,0,0,0,0,6,0,0,1,0,0,Agen,26,Top 14 Orange 2018
-Y TangaF,0,0,0,0,0,0,0,0,5,5,0,0,0,0,0,12,0,0,0,0,0,Agen,26,Top 14 Orange 2018
-A ErbaniF,0,0,0,0,0,0,0,4,11,14,0,0,0,0,1,11,1,0,0,0,0,Agen,26,Top 14 Orange 2018
-A QeraN8,0,0,0,0,0,0,0,3,6,4,0,0,1,0,2,5,2,0,0,0,0,Agen,26,Top 14 Orange 2018
-P NgauamoR,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,2,0,0,0,Agen,26,Top 14 Orange 2018
-K TufeleR,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,1,0,0,Agen,26,Top 14 Orange 2018
-T MurdayR,0,0,0,0,0,0,0,2,3,1,0,0,0,0,0,5,0,0,0,0,0,Agen,26,Top 14 Orange 2018
-A MiquelR,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,Agen,26,Top 14 Orange 2018
-H VerduR,0,0,0,1,0,3,1,0,1,2,0,0,0,0,0,0,0,0,0,0,0,Agen,26,Top 14 Orange 2018
-J SadieR,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Agen,26,Top 14 Orange 2018
-C LaporteR,0,0,0,0,0,0,1,0,1,5,0,0,0,0,0,0,0,0,0,0,0,Agen,26,Top 14 Orange 2018
-A JolyR,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,6,0,0,0,0,0,Agen,26,Top 14 Orange 2018
-C AshtonFB,3,0,0,0,0,15,2,5,9,92,3,0,0,0,1,0,1,0,0,0,0,Toulon,24,Top 14 Orange 2018
-J TuisovaW,0,0,0,0,0,0,0,0,8,20,0,1,0,0,2,1,0,0,1,0,0,Toulon,24,Top 14 Orange 2018
-M FekitoaC,0,0,0,0,0,0,0,6,11,50,2,5,3,0,0,3,0,0,1,0,0,Toulon,24,Top 14 Orange 2018
-M NonuC,1,0,0,0,0,5,1,9,6,5,0,2,0,0,1,5,0,0,1,0,0,Toulon,24,Top 14 Orange 2018
-S RadradraW,0,2,0,0,0,0,0,4,7,51,1,3,1,0,2,2,2,1,1,0,0,Toulon,24,Top 14 Orange 2018
-L McAlisterFH,0,0,2,0,0,4,11,14,2,0,0,0,0,0,2,0,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
-A MericSH,0,2,0,0,0,0,3,57,8,35,2,3,2,0,1,5,1,0,0,0,0,Toulon,24,Top 14 Orange 2018
-F FresiaP,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0,11,1,0,1,0,0,Toulon,24,Top 14 Orange 2018
-A EtrillardH,0,0,0,0,0,0,0,1,11,12,0,0,0,0,2,16,0,9,0,0,0,Toulon,24,Top 14 Orange 2018
-M MerweP,0,0,0,0,0,0,0,0,6,8,0,0,0,0,0,8,2,0,1,0,0,Toulon,24,Top 14 Orange 2018
-M GorgodzeL,0,0,0,0,0,0,0,2,1,0,0,0,0,0,0,12,0,0,1,0,0,Toulon,24,Top 14 Orange 2018
-J KrugerL,0,0,0,0,0,0,0,3,4,0,0,0,0,0,0,13,0,0,1,0,0,Toulon,24,Top 14 Orange 2018
-S ManoaF,0,0,0,0,0,0,0,2,10,15,0,0,1,0,0,7,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
-R LakafiaF,0,0,0,0,0,0,0,4,10,17,1,0,0,0,0,18,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
-D VermeulenN8,0,0,0,0,0,0,0,5,8,13,0,0,0,0,0,8,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
-B SouryR,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
-X ChiocciR,0,0,0,0,0,0,0,1,3,6,0,1,0,0,0,3,0,0,3,0,0,Toulon,24,Top 14 Orange 2018
-R TaofifenuaR,0,0,0,0,0,0,0,1,3,1,0,0,0,1,0,3,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
-J LobbeR,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
-L CarbonelR,0,0,0,0,0,0,4,1,1,0,0,0,0,0,1,0,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
-J PietersenR,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
-A MathewsonR,0,0,0,0,0,0,4,7,0,0,0,0,0,0,0,1,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
-L ChilachavaR,0,0,0,0,0,0,0,0,5,1,0,0,0,0,1,0,0,0,0,0,0,Toulon,24,Top 14 Orange 2018
+Player,T_x,TA,CG,PG,DGC,PTS,K,P,R,MR,CB,DB,O,LWS,TC,T_y,MT,LW,PC,YC,RC,team,score,competition,postition
+M Lamoulie,0,0,0,0,0,0,0,3,6,64,0,2,0,0,0,2,1,0,1,0,0,Agen,26,Top 14 Orange 2018,FB
+G Tilsley,1,0,0,0,0,5,0,3,13,98,1,2,1,0,1,3,1,0,0,0,0,Agen,26,Top 14 Orange 2018,W
+J Heriteau,0,0,0,0,0,0,0,2,3,9,1,1,2,0,0,4,3,0,0,0,0,Agen,26,Top 14 Orange 2018,C
+P Fouyssac,0,0,0,0,0,0,0,1,5,7,0,0,0,0,1,11,1,0,0,0,0,Agen,26,Top 14 Orange 2018,C
+F Nakosi,0,0,0,0,0,0,1,0,5,17,0,2,0,0,0,3,1,0,1,0,0,Agen,26,Top 14 Orange 2018,W
+J McIntyre,0,1,2,3,0,13,15,25,3,0,0,0,0,0,1,4,1,0,0,0,0,Agen,26,Top 14 Orange 2018,FH
+R Januarie,0,0,0,0,0,0,7,54,6,16,1,0,0,0,0,3,0,0,0,0,0,Agen,26,Top 14 Orange 2018,SH
+Q Bethune,0,0,0,0,0,0,0,0,6,8,0,0,0,0,1,12,1,0,0,0,0,Agen,26,Top 14 Orange 2018,P
+F Bosch,0,0,0,0,0,0,0,2,13,31,0,0,1,0,1,17,2,11,2,0,0,Agen,26,Top 14 Orange 2018,H
+D Ryan,0,0,0,0,0,0,0,1,6,5,0,0,0,0,0,8,0,0,0,0,0,Agen,26,Top 14 Orange 2018,P
+D Marchois,1,0,0,0,0,5,0,1,8,3,0,0,0,0,0,6,1,0,0,0,0,Agen,26,Top 14 Orange 2018,L
+C Braendlin,0,0,0,0,0,0,0,0,2,1,0,0,0,0,0,6,0,0,1,0,0,Agen,26,Top 14 Orange 2018,L
+Y Tanga,0,0,0,0,0,0,0,0,5,5,0,0,0,0,0,12,0,0,0,0,0,Agen,26,Top 14 Orange 2018,F
+A Erbani,0,0,0,0,0,0,0,4,11,14,0,0,0,0,1,11,1,0,0,0,0,Agen,26,Top 14 Orange 2018,F
+A Qera,0,0,0,0,0,0,0,3,6,4,0,0,1,0,2,5,2,0,0,0,0,Agen,26,Top 14 Orange 2018,N8
+P Ngauamo,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,2,0,0,0,Agen,26,Top 14 Orange 2018,R
+K Tufele,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,1,0,0,Agen,26,Top 14 Orange 2018,R
+T Murday,0,0,0,0,0,0,0,2,3,1,0,0,0,0,0,5,0,0,0,0,0,Agen,26,Top 14 Orange 2018,R
+A Miquel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,Agen,26,Top 14 Orange 2018,R
+H Verdu,0,0,0,1,0,3,1,0,1,2,0,0,0,0,0,0,0,0,0,0,0,Agen,26,Top 14 Orange 2018,R
+J Sadie,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Agen,26,Top 14 Orange 2018,R
+C Laporte,0,0,0,0,0,0,1,0,1,5,0,0,0,0,0,0,0,0,0,0,0,Agen,26,Top 14 Orange 2018,R
+A Joly,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,6,0,0,0,0,0,Agen,26,Top 14 Orange 2018,R
+C Ashton,3,0,0,0,0,15,2,5,9,92,3,0,0,0,1,0,1,0,0,0,0,Toulon,24,Top 14 Orange 2018,FB
+J Tuisova,0,0,0,0,0,0,0,0,8,20,0,1,0,0,2,1,0,0,1,0,0,Toulon,24,Top 14 Orange 2018,W
+M Fekitoa,0,0,0,0,0,0,0,6,11,50,2,5,3,0,0,3,0,0,1,0,0,Toulon,24,Top 14 Orange 2018,C
+M Nonu,1,0,0,0,0,5,1,9,6,5,0,2,0,0,1,5,0,0,1,0,0,Toulon,24,Top 14 Orange 2018,C
+S Radradra,0,2,0,0,0,0,0,4,7,51,1,3,1,0,2,2,2,1,1,0,0,Toulon,24,Top 14 Orange 2018,W
+L McAlister,0,0,2,0,0,4,11,14,2,0,0,0,0,0,2,0,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,FH
+A Meric,0,2,0,0,0,0,3,57,8,35,2,3,2,0,1,5,1,0,0,0,0,Toulon,24,Top 14 Orange 2018,SH
+F Fresia,0,0,0,0,0,0,0,1,2,1,0,0,0,0,0,11,1,0,1,0,0,Toulon,24,Top 14 Orange 2018,P
+A Etrillard,0,0,0,0,0,0,0,1,11,12,0,0,0,0,2,16,0,9,0,0,0,Toulon,24,Top 14 Orange 2018,H
+M Merwe,0,0,0,0,0,0,0,0,6,8,0,0,0,0,0,8,2,0,1,0,0,Toulon,24,Top 14 Orange 2018,P
+M Gorgodze,0,0,0,0,0,0,0,2,1,0,0,0,0,0,0,12,0,0,1,0,0,Toulon,24,Top 14 Orange 2018,L
+J Kruger,0,0,0,0,0,0,0,3,4,0,0,0,0,0,0,13,0,0,1,0,0,Toulon,24,Top 14 Orange 2018,L
+S Manoa,0,0,0,0,0,0,0,2,10,15,0,0,1,0,0,7,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,F
+R Lakafia,0,0,0,0,0,0,0,4,10,17,1,0,0,0,0,18,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,F
+D Vermeulen,0,0,0,0,0,0,0,5,8,13,0,0,0,0,0,8,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,N8
+B Soury,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,R
+X Chiocci,0,0,0,0,0,0,0,1,3,6,0,1,0,0,0,3,0,0,3,0,0,Toulon,24,Top 14 Orange 2018,R
+R Taofifenua,0,0,0,0,0,0,0,1,3,1,0,0,0,1,0,3,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,R
+J Lobbe,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,R
+L Carbonel,0,0,0,0,0,0,4,1,1,0,0,0,0,0,1,0,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,R
+J Pietersen,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,R
+A Mathewson,0,0,0,0,0,0,4,7,0,0,0,0,0,0,0,1,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,R
+L Chilachava,0,0,0,0,0,0,0,0,5,1,0,0,0,0,1,0,0,0,0,0,0,Toulon,24,Top 14 Orange 2018,R
+K Matsushima,0,0,0,0,0,0,5,2,13,94,3,9,0,0,1,3,3,0,0,0,0,Japan,30,Friendly 2017,FB
+L Lemeki,0,0,0,0,0,0,0,3,7,11,3,1,1,0,0,6,1,0,0,0,0,Japan,30,Friendly 2017,W
+T Lafaele,0,0,0,0,0,0,0,4,4,4,0,1,0,0,0,12,0,0,0,0,0,Japan,30,Friendly 2017,C
+H Tatekawa,0,0,0,0,0,0,1,6,1,1,0,0,0,0,0,9,3,0,1,0,0,Japan,30,Friendly 2017,C
+R Noguchi,0,0,0,0,0,0,0,4,6,22,0,1,2,0,1,3,2,0,0,0,0,Japan,30,Friendly 2017,W
+R Matsuda,0,0,1,3,0,11,9,10,10,51,1,2,0,0,2,7,3,0,1,0,0,Japan,30,Friendly 2017,FH
+F Tanaka,0,0,0,0,0,0,7,41,0,0,0,0,0,0,0,2,2,0,0,0,0,Japan,30,Friendly 2017,SH
+K Inagaki,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,17,3,0,1,0,0,Japan,30,Friendly 2017,P
+S Horie,0,0,0,0,0,0,0,0,2,8,0,0,0,0,0,13,2,6,1,0,0,Japan,30,Friendly 2017,H
+T Asahara,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,2,2,0,1,0,0,Japan,30,Friendly 2017,P
+K Himeno,1,0,0,0,0,5,0,1,10,27,2,5,0,0,3,13,0,0,1,0,0,Japan,30,Friendly 2017,L
+U Helu,0,0,0,0,0,0,0,0,3,6,0,1,0,0,0,4,0,0,1,0,0,Japan,30,Friendly 2017,L
+M Leitch,0,0,0,0,0,0,0,5,9,11,0,3,1,0,1,18,0,0,0,0,0,Japan,30,Friendly 2017,F
+S Nunomaki,0,0,0,0,0,0,0,4,1,4,0,0,0,0,1,10,5,0,0,0,0,Japan,30,Friendly 2017,F
+A Mafi,1,0,0,0,0,5,0,2,14,38,0,1,0,0,1,18,2,0,0,0,0,Japan,30,Friendly 2017,N8
+A Sakate,0,0,0,0,0,0,0,0,3,10,1,1,0,0,0,3,0,4,0,0,0,Japan,30,Friendly 2017,R
+K Yamamoto,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Japan,30,Friendly 2017,R
+A Valu,0,0,0,0,0,0,0,0,2,11,0,1,0,0,0,5,1,0,1,0,0,Japan,30,Friendly 2017,R
+W Walt,1,0,0,0,0,5,0,0,8,9,0,1,0,0,0,13,1,0,0,0,0,Japan,30,Friendly 2017,R
+F Lautami,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0,0,0,Japan,30,Friendly 2017,R
+Y Nagare,0,1,0,0,0,0,0,26,3,4,0,0,0,0,0,0,0,0,0,0,0,Japan,30,Friendly 2017,R
+Y Tamura,0,0,2,0,0,4,5,5,0,0,0,0,0,0,0,1,0,0,0,0,0,Japan,30,Friendly 2017,R
+S Teaupa,0,0,0,0,0,0,0,2,5,39,2,9,1,0,2,5,2,0,0,0,0,Japan,30,Friendly 2017,R
+K Beale,0,3,0,0,0,0,7,14,10,76,1,0,2,0,1,3,0,0,0,0,0,Australia,63,Friendly 2017,FB
+H Speight,1,0,0,0,0,5,0,1,6,41,2,6,1,0,1,5,2,0,0,0,0,Australia,63,Friendly 2017,W
+T Kuridrani,3,0,0,0,0,15,0,1,6,94,3,1,1,0,0,6,2,0,2,0,0,Australia,63,Friendly 2017,C
+S Kerevi,2,1,0,0,0,10,0,4,17,111,2,6,2,0,0,8,3,0,1,0,0,Australia,63,Friendly 2017,C
+M Koroibete,0,1,0,0,0,0,0,6,9,44,1,1,4,0,0,9,5,0,1,0,0,Australia,63,Friendly 2017,W
+R Hodge,0,1,9,0,0,18,18,21,14,34,0,0,0,0,1,3,1,0,1,0,0,Australia,63,Friendly 2017,FH
+N Phipps,1,1,0,0,0,5,2,103,5,5,0,2,1,0,3,3,1,0,1,0,0,Australia,63,Friendly 2017,SH
+S Sio,0,0,0,0,0,0,0,6,6,18,1,2,0,0,0,3,1,0,0,0,0,Australia,63,Friendly 2017,P
+T Polota-Nau,1,0,0,0,0,5,1,3,13,23,0,1,0,0,1,4,3,9,1,0,0,Australia,63,Friendly 2017,H
+S Kepu,0,0,0,0,0,0,0,2,7,3,0,0,2,0,2,5,1,0,1,0,0,Australia,63,Friendly 2017,P
+R Simmons,1,0,0,0,0,5,0,6,14,33,1,1,0,0,1,5,2,0,1,0,0,Australia,63,Friendly 2017,L
+A Coleman,0,0,0,0,0,0,0,4,6,10,0,0,0,1,0,7,0,0,1,0,0,Australia,63,Friendly 2017,L
+N Hanigan,0,0,0,0,0,0,0,5,9,19,0,0,0,0,1,7,3,0,0,0,0,Australia,63,Friendly 2017,F
+M Hooper,0,0,0,0,0,0,1,3,5,8,1,1,0,0,0,12,1,0,1,0,0,Australia,63,Friendly 2017,F
+S McMahon,0,0,0,0,0,0,0,7,13,54,1,4,2,0,0,7,1,0,0,0,0,Australia,63,Friendly 2017,N8
+S Moore,0,0,0,0,0,0,0,1,1,3,0,0,0,0,0,2,0,4,0,0,0,Australia,63,Friendly 2017,R
+T Robertson,0,0,0,0,0,0,0,0,2,7,0,1,0,0,0,3,0,0,0,0,0,Australia,63,Friendly 2017,R
+A Alaalatoa,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,2,2,0,0,0,0,Australia,63,Friendly 2017,R
+M Philip,0,0,0,0,0,0,0,0,6,10,0,1,0,0,0,5,1,0,1,0,0,Australia,63,Friendly 2017,R
+B McCalman,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,1,0,0,Australia,63,Friendly 2017,R
+L Timani,0,0,0,0,0,0,0,0,2,6,0,0,0,0,0,4,4,0,0,0,0,Australia,63,Friendly 2017,R
+J Powell,0,0,0,0,0,0,1,12,0,0,0,0,0,0,0,5,1,0,0,0,0,Australia,63,Friendly 2017,R
+C Rona,0,0,0,0,0,0,0,2,4,17,0,5,0,0,0,0,2,0,1,0,0,Australia,63,Friendly 2017,R

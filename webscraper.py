@@ -34,6 +34,7 @@ def generate_urls(numdays):
         for link in soup.find_all('a'):
             if 'gameId' in str(link.get('href')):
                 links.append(re.sub('.*\?', 'http://www.espn.co.uk/rugby/playerstats?', str(link.get('href'))))
+                print(len(links))
     return list(set(links))
 
 
@@ -110,19 +111,26 @@ def parse_position(dataframe):
 
 
 if __name__ == "__main__": 
-    urls = generate_urls(5)
+    urls = generate_urls(2000)
+    
     all_results = []
+    counter = 0
     for url in urls:
         try:
             browser = open_webpage(url)
             match_data = get_match_data(browser)
             player_data = get_player_data(browser)
             results = combine_results(match_data, player_data)
-            all_results.append(results)
+            #all_results.append(results)
             browser.quit()
+            counter += 1
+            final_parsed = parse_position(results)
+            filename = "matches/match{}.csv".format(str(counter))
+            final_parsed.to_csv(filename, index=False)
         except:
-            print("The following url didn't work: ", url)
+            failed = "matches/failed{}.txt".format(str(counter))
+            f = open(failed,'w')
+            f.write(url)
+            f.close()
             browser.quit()
-    final = pd.concat(all_results)
-    final_parsed = parse_position(final)
-    write_results(final_parsed)
+

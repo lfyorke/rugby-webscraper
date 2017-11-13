@@ -3,6 +3,6 @@
 chromedriver.exe
 
 # spreadsheet #
-match/
+matches/
 match.csv
 match/*.csv

@@ -28,14 +28,15 @@ def generate_urls(numdays):
                  for x in range(0, numdays)]
     base_url = 'http://www.espn.co.uk/rugby/fixtures/_/date/'
     urls = [base_url + date for date in date_list]
-    links = []
-    for url in urls:
+    links = {}
+    for i, url in enumerate(urls):
         soup = bs4.BeautifulSoup(requests.get(url).text, 'lxml')
+        date_links = []
         for link in soup.find_all('a'):
             if 'gameId' in str(link.get('href')):
-                links.append(re.sub('.*\?', 'http://www.espn.co.uk/rugby/playerstats?', str(link.get('href'))))
-                print(len(links))
-    return list(set(links))
+                date_links.append(re.sub('.*\?', 'http://www.espn.co.uk/rugby/playerstats?', str(link.get('href'))))
+        links[date_list[i]] = list(set(date_links))
+    return links
 
 
 def open_webpage(url):
@@ -85,7 +86,7 @@ def get_player_data(browser):
     single_result = functools.reduce(lambda left,right: pd.merge(left,right,on='Player'), frames)
     return single_result
 
-def combine_results(match_data, player_data):
+def combine_results(match_data, player_data, date, url):
     """ This functions joins the player and match data and returns a single dataframe"""
     player_data["team"] = None
     player_data["team"][0:23] = match_data["team_a"]
@@ -94,6 +95,9 @@ def combine_results(match_data, player_data):
     player_data["score"][0:23] = match_data["team_a_score"]
     player_data["score"][23:] = match_data["team_b_score"]
     player_data["competition"] = match_data["competition"]
+    player_data["date"] = date
+    player_data["url"] = url
+    player_data["game_id"] = re.search('([0-9]+)', url).group(1)
     return player_data
 
 
@@ -110,27 +114,30 @@ def parse_position(dataframe):
     return dataframe
 
 
-if __name__ == "__main__": 
-    urls = generate_urls(2000)
-    
-    all_results = []
-    counter = 0
-    for url in urls:
-        try:
-            browser = open_webpage(url)
-            match_data = get_match_data(browser)
-            player_data = get_player_data(browser)
-            results = combine_results(match_data, player_data)
-            #all_results.append(results)
-            browser.quit()
-            counter += 1
-            final_parsed = parse_position(results)
-            filename = "matches/match{}.csv".format(str(counter))
-            final_parsed.to_csv(filename, index=False)
-        except:
-            failed = "matches/failed{}.txt".format(str(counter))
-            f = open(failed,'w')
-            f.write(url)
-            f.close()
-            browser.quit()
+def get_match_commentary(browser):
+    """ Return the match commentary which will be used to get minutes played for each player 
+        and also used to get the position of replacements"""
+    pass
 
+
+if __name__ == "__main__": 
+    urls = generate_urls(5)
+    counter = 0
+    for date, url_list in urls.items():
+        for url in url_list:
+            try:
+                browser = open_webpage(url)
+                match_data = get_match_data(browser)
+                player_data = get_player_data(browser)
+                results = combine_results(match_data, player_data, date, url)
+                browser.quit()
+                counter += 1
+                final_parsed = parse_position(results)
+                filename = "matches/match{}.csv".format(str(counter))
+                final_parsed.to_csv(filename, index=False)
+            except:
+                failed = "matches/failed{}.txt".format(str(counter))
+                f = open(failed,'w')
+                f.write(url)
+                f.close()
+                browser.quit()

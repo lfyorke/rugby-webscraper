@@ -20,10 +20,12 @@ MATCH_DICT = {"Scoring": 0,
               "Defending": 0,
               "Discipline": 0}
 
-def generate_urls(numdays):
+BASE = datetime.datetime.today()
+
+def generate_urls(numdays, startdate=BASE):
     """ This function returns a list of  all the games from today to numdays
     ago and fetches all the links we need to fetch the data."""
-    base = datetime.datetime.today()
+    base = BASE
     date_list = [(base - datetime.timedelta(days=x)).strftime("%Y%m%d")
                  for x in range(0, numdays)]
     base_url = 'http://www.espn.co.uk/rugby/fixtures/_/date/'
@@ -141,10 +143,10 @@ def write_commentary(commentary, url):
 
 if __name__ == "__main__": 
     urls = generate_urls(5)
-    counter = 0
     for date, url_list in urls.items():
         for url in url_list:
             try:
+                game_id = re.search('([0-9]+)', url).group(1)
                 venue, commentary = get_match_commentary(url)
                 write_commentary(commentary, url)
                 browser = open_webpage(url)
@@ -152,9 +154,8 @@ if __name__ == "__main__":
                 player_data = get_player_data(browser)
                 results = combine_results(match_data, player_data, date, url, venue)
                 browser.quit()
-                counter += 1
                 final_parsed = parse_position(results)
-                filename = "matches/match{}.csv".format(str(counter))
+                filename = "matches/match{}.csv".format(str(game_id))
                 final_parsed.to_csv(filename, index=False)   
             except:
                 failed = "matches/failed{}.txt".format(str(counter))

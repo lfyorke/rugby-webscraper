@@ -86,7 +86,7 @@ def get_player_data(browser):
     single_result = functools.reduce(lambda left,right: pd.merge(left,right,on='Player'), frames)
     return single_result
 
-def combine_results(match_data, player_data, date, url):
+def combine_results(match_data, player_data, date, url, venue):
     """ This functions joins the player and match data and returns a single dataframe"""
     player_data["team"] = None
     player_data["team"][0:23] = match_data["team_a"]
@@ -98,6 +98,7 @@ def combine_results(match_data, player_data, date, url):
     player_data["date"] = date
     player_data["url"] = url
     player_data["game_id"] = re.search('([0-9]+)', url).group(1)
+    player_data["venue"] = venue
     return player_data
 
 
@@ -114,10 +115,28 @@ def parse_position(dataframe):
     return dataframe
 
 
-def get_match_commentary(browser):
+def get_match_commentary(url):
     """ Return the match commentary which will be used to get minutes played for each player 
         and also used to get the position of replacements"""
-    pass
+    url_updated = re.sub("playerstats", "commentary", url)
+    webpage = requests.get(url_updated)
+    soup = bs4.BeautifulSoup(webpage.text, "html.parser")
+    venue = re.search(": (.*)", soup.find("div", class_="capacity").get_text()).group(1)
+    col = soup.find("div", class_="col-two")
+    commentary = []
+    for row in col.find_all("tr"):
+        commentary.append(row.get_text())
+    return venue, commentary
+
+
+def write_commentary(commentary, url):
+    """ Write the commentary to a csv, include game id so it can be joined back to main
+        data at a later date.  Also includes match url"""
+    df = pd.DataFrame(commentary, columns=["commentary"])
+    game_id = re.search('([0-9]+)', url).group(1)
+    df["game_id"] = game_id
+    filename = "matches/commentary{}.csv".format(str(game_id))
+    df.to_csv(filename, index=False)
 
 
 if __name__ == "__main__": 
@@ -126,18 +145,22 @@ if __name__ == "__main__":
     for date, url_list in urls.items():
         for url in url_list:
             try:
+                venue, commentary = get_match_commentary(url)
+                write_commentary(commentary, url)
                 browser = open_webpage(url)
                 match_data = get_match_data(browser)
                 player_data = get_player_data(browser)
-                results = combine_results(match_data, player_data, date, url)
+                results = combine_results(match_data, player_data, date, url, venue)
                 browser.quit()
                 counter += 1
                 final_parsed = parse_position(results)
                 filename = "matches/match{}.csv".format(str(counter))
-                final_parsed.to_csv(filename, index=False)
+                final_parsed.to_csv(filename, index=False)   
             except:
                 failed = "matches/failed{}.txt".format(str(counter))
                 f = open(failed,'w')
                 f.write(url)
                 f.close()
                 browser.quit()
+                
+

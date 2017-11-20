@@ -1,5 +1,6 @@
 import requests, bs4, functools, re, datetime
 import pandas as pd
+import numpy as np
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -92,6 +93,11 @@ def combine_results(match_data, player_data, date, url, venue):
     """ This functions joins the player and match data and returns a single dataframe"""
     player_data["team"] = None
     player_data["team"][0:23] = match_data["team_a"]
+    player_data["start_flag"] = None
+    player_data["start_flag"][0:15] = 1
+    player_data["start_flag"][15:23] = 0
+    player_data["start_flag"][23:38] = 1
+    player_data["start_flag"][38:] = 0
     player_data["team"][23:] = match_data["team_b"]
     player_data["score"] = None
     player_data["score"][0:23] = match_data["team_a_score"]
@@ -141,11 +147,31 @@ def write_commentary(commentary, url):
     df.to_csv(filename, index=False)
 
 
+def derive_minutes_played(commentary, player_data):
+    """ Merge commentary and player data and use to derive minutes played for each 
+        player """
+    commentary = pd.DataFrame(commentary, columns=["commentary"])
+    commentary['minute'], commentary['text'] = commentary['commentary'].str.split('\'', 1).str
+    commentary = commentary[commentary['text'].str.contains("ubstitute")]
+    commentary["Player1"] = commentary["text"].str.extract('-\ (.)')
+    commentary["Player2"] = commentary["text"].str.extract('-\ [A-Za-z]+\ ([A-Za-z]+)')
+    commentary["Player"] = commentary["Player1"] + ' ' + commentary["Player2"]
+    commentary["minutes-played1"] = pd.to_numeric(commentary["minute"][commentary['text'].str.contains("on ")])
+    commentary["on flag"] = np.where(commentary['text'].str.contains('on '), 1, 0)
+    commentary["minutes-played2"] = pd.to_numeric(commentary["minute"][commentary['text'].str.contains("Player")])
+    commentary["minute_from_text"] = commentary["minutes-played1"].fillna(0) + commentary["minutes-played2"].fillna(0)
+    commentary.drop(['minutes-played1', 'minutes-played2', 'Player1', 'Player2'], axis = 1, inplace = True)
+    print(commentary)
+
+
+    pass
+
 if __name__ == "__main__": 
-    urls = generate_urls(5)
+    #urls = generate_urls(5)
+    urls = {21071111: ["http://www.espn.co.uk/rugby/playerstats?gameId=291271&league=289234"]}
     for date, url_list in urls.items():
         for url in url_list:
-            try:
+            #try:
                 game_id = re.search('([0-9]+)', url).group(1)
                 venue, commentary = get_match_commentary(url)
                 write_commentary(commentary, url)
@@ -154,14 +180,17 @@ if __name__ == "__main__":
                 player_data = get_player_data(browser)
                 results = combine_results(match_data, player_data, date, url, venue)
                 browser.quit()
+                derive_minutes_played(commentary, results)
+                """
                 final_parsed = parse_position(results)
                 filename = "matches/match{}.csv".format(str(game_id))
                 final_parsed.to_csv(filename, index=False)   
+                
             except:
                 failed = "matches/failed{}.txt".format(str(counter))
                 f = open(failed,'w')
                 f.write(url)
                 f.close()
                 browser.quit()
-                
+                """
 

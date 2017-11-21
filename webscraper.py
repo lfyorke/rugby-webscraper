@@ -154,24 +154,53 @@ def derive_minutes_played(commentary, player_data):
     commentary['minute'], commentary['text'] = commentary['commentary'].str.split('\'', 1).str
     commentary = commentary[commentary['text'].str.contains("ubstitute")]
     commentary["Player1"] = commentary["text"].str.extract('-\ (.)')
-    commentary["Player2"] = commentary["text"].str.extract('-\ [A-Za-z]+\ ([A-Za-z]+)')
+    commentary["Player2"] = commentary["text"].str.extract('-\ [A-Za-z]+\ (.*)\ ,')
     commentary["Player"] = commentary["Player1"] + ' ' + commentary["Player2"]
     commentary["minutes-played1"] = pd.to_numeric(commentary["minute"][commentary['text'].str.contains("on ")])
     commentary["on flag"] = np.where(commentary['text'].str.contains('on '), 1, 0)
     commentary["minutes-played2"] = pd.to_numeric(commentary["minute"][commentary['text'].str.contains("Player")])
     commentary["minute_from_text"] = commentary["minutes-played1"].fillna(0) + commentary["minutes-played2"].fillna(0)
     commentary.drop(['minutes-played1', 'minutes-played2', 'Player1', 'Player2'], axis = 1, inplace = True)
-    print(commentary)
+    commentary = commentary.iloc[::-1]
+    players = player_data["Player"]
+    player_data["minutes_played"] = None
 
+    for player in players:
+        total = 0
+        off_count = 0
+        on_count = 0
+        last_off = 0
+        last_on = 0
+        a = player_data["start_flag"][player_data["Player"] == player].iloc[0]
 
-    pass
+        for index, row in commentary.iterrows():
+            if row["Player"] == player and row["on flag"] == 0:
+                last_off = row["minute_from_text"]
+                off_count += 1
+                total += last_off - last_on
+            elif row["Player"] == player and row["on flag"] == 1:
+                last_on = row["minute_from_text"]
+                on_count = on_count + 1
+            else:
+                pass
+        if off_count == 0 and a == 1:
+            total = 80
+        elif on_count == 0 and a == 0:
+            total = 0
+        elif on_count == 1 and a == 0:
+            total = 80 - last_on
+        else:
+            pass
+
+        player_data["minutes_played"][player_data["Player"] == player] = total
+    return player_data
 
 if __name__ == "__main__": 
-    #urls = generate_urls(5)
-    urls = {21071111: ["http://www.espn.co.uk/rugby/playerstats?gameId=291271&league=289234"]}
+    urls = generate_urls(5)
+    #urls = {21071111: ["http://www.espn.co.uk/rugby/playerstats?gameId=291271&league=289234"]}
     for date, url_list in urls.items():
         for url in url_list:
-            #try:
+            try:
                 game_id = re.search('([0-9]+)', url).group(1)
                 venue, commentary = get_match_commentary(url)
                 write_commentary(commentary, url)
@@ -180,17 +209,14 @@ if __name__ == "__main__":
                 player_data = get_player_data(browser)
                 results = combine_results(match_data, player_data, date, url, venue)
                 browser.quit()
-                derive_minutes_played(commentary, results)
-                """
                 final_parsed = parse_position(results)
+                final_results = derive_minutes_played(commentary, final_parsed)
                 filename = "matches/match{}.csv".format(str(game_id))
-                final_parsed.to_csv(filename, index=False)   
-                
+                final_results.to_csv(filename, index=False)
             except:
                 failed = "matches/failed{}.txt".format(str(counter))
                 f = open(failed,'w')
                 f.write(url)
                 f.close()
                 browser.quit()
-                """
 

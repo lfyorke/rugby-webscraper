@@ -5,11 +5,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import argparse
 
 
 class espn_scraper:
 
-    def __init__(self, BASE=datetime.datetime.today(), webdriver='chromedriver.exe'):
+    def __init__(self, BASE=datetime.datetime.today(), webdriver='chromedriver.exe', numdays=14):
         self.XPATHS = {"Scoring": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[1]',
                   "Attacking": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[2]',
                   "Defending": '//*[@id="main-container"]/div/div/div[1]/div[1]/div[1]/ul/li[3]',
@@ -29,18 +30,19 @@ class espn_scraper:
 
         self.webdriver = webdriver
 
+        self.numdays = numdays
+
     def open_webpage(self, url):
         """
             Takes a url as an input and uses selenium to create a connection to a web page.
 
             Returns an Selenium WebDriver object for the input web page string.
         """
-        print(webdriver)
         browser = webdriver.Chrome(executable_path=self.webdriver)
         browser.get(url)
         return browser
 
-    def generate_urls(self, base, numdays=14):
+    def generate_urls(self, base):
         """
             This function returns a list of  all the games from today to numdays
             ago and fetches all the links we need to fetch the data.
@@ -51,7 +53,7 @@ class espn_scraper:
             {'date_1': [url1, url2, url3...], date_2: [...], ..}
         """
         # TODO  Implement a yield method here to yield a single link at a time instead of an entire list?
-        date_list = [(base - datetime.timedelta(days=x)).strftime("%Y%m%d") for x in range(0, numdays)]
+        date_list = [(base - datetime.timedelta(days=x)).strftime("%Y%m%d") for x in range(0, self.numdays)]
         urls = ['http://www.espn.co.uk/rugby/fixtures/_/date/' + date for date in date_list]
         links = {}
         for i, url in enumerate(urls):
@@ -276,9 +278,14 @@ class espn_scraper:
         final_results.to_csv(filename, index=False)
 
 if __name__ == '__main__':
-    wrapper = espn_scraper(BASE=datetime.datetime.today())
-    urls = wrapper.generate_urls(base=wrapper.BASE, numdays=5)
-    print(urls)
+    
+    parser = argparse.ArgumentParser(description='Arguments for pipeline')
+    parser.add_argument('--numdays', type=int, help='an integer for the number of days to look back for matches')
+    parser.add_argument('--driver', help='path to webdriver.exe')
+    args = parser.parse_args()
+
+    wrapper = espn_scraper(BASE=datetime.datetime.today(), webdriver=args.driver, numdays=args.numdays)
+    urls = wrapper.generate_urls(base=wrapper.BASE)
     urls = {21071111: ["http://www.espn.co.uk/rugby/playerstats?gameId=291271&league=289234"]}
     for date, url_list in urls.items():
         for url in url_list:

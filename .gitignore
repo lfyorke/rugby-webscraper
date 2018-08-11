@@ -6,3 +6,7 @@ chromedriver.exe
 matches/
 match.csv
 match/*.csv
+*.csv
+
+# .idea #
+.idea/
